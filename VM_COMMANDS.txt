@@ -1,0 +1,28 @@
+Emergency Notification Network - Ubuntu VM commands
+
+The host project folder is already shared with VirtualBox as CN_project.
+Run these commands inside Ubuntu Terminal, one line at a time.
+
+1. Mount and enter the project folder:
+sudo mkdir -p /mnt/cn
+sudo mount -t vboxsf CN_project /mnt/cn
+cd /mnt/cn
+
+If mount reports that it is already mounted, continue with cd /mnt/cn.
+If mount reports "unknown filesystem type vboxsf", stop and report that error.
+
+2. Install the required Ubuntu packages if needed:
+sudo apt update
+sudo apt install -y mininet openvswitch-switch python3
+sudo systemctl start openvswitch-switch
+
+3. Run the application tests and all six Mininet scenarios:
+sudo bash run_experiments.sh
+
+Results are saved in results/ubuntu-YYYYMMDD-HHMMSS/ in the shared folder.
+Enter your Ubuntu password only in Terminal when sudo asks for it.
+If a command fails, copy its error back to the project chat.
+
+Alternative if using the attached ZIP instead of the shared folder:
+Extract the ZIP in Ubuntu, open Terminal in the extracted project directory,
+skip step 1, and follow steps 2 and 3.
